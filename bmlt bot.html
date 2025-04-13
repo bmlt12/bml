@@ -419,7 +419,7 @@
         }
         
         .typing-indicator {
-            display: flex;
+            display: none;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
             align-items: center;
@@ -428,31 +428,95 @@
             max-width: 800px;
             margin: 0 auto;
             width: 100%;
+            background-color: var(--sidebar-color);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
         }
         
-        .typing-dots {
+        .acknowledgment {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin: 0.5rem 0;
+            font-style: italic;
+        }
+        
+        .thinking-time {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .follow-up {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.9rem;
+        }
+        
+        .suggestions {
             display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .suggestion-chip {
+            padding: 0.5rem 0.75rem;
+            background-color: var(--sidebar-color);
+            border-radius: 18px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .suggestion-chip:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+        
+        .status-message {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-message i {
+            font-size: 0.9rem;
+        }
+        
+        .message-status {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 0.5rem;
+            gap: 0.5rem;
+        }
+        
+        .message-status-item {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
             gap: 0.25rem;
         }
         
+        .typing-animation {
+            display: inline-flex;
+            align-items: flex-end;
+            height: 20px;
+        }
+        
         .typing-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background-color: var(--text-secondary);
+            margin: 0 1px;
             animation: typingAnimation 1.4s infinite ease-in-out;
-        }
-        
-        .typing-dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-        
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
         }
         
         @keyframes typingAnimation {
@@ -463,146 +527,35 @@
                 opacity: 0.6;
             }
             30% {
-                transform: translateY(-4px);
+                transform: translateY(-3px);
                 opacity: 1;
             }
         }
         
-        .upload-section {
-            padding: 1rem;
-            border-top: 1px solid var(--border-color);
-            background-color: var(--sidebar-color);
+        .read-receipt {
+            color: var(--primary);
         }
         
-        .upload-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0.75rem;
-        }
-        
-        .file-input-label {
-            flex: 1;
-            position: relative;
-        }
-        
-        .file-input {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-        
-        .file-input-button {
+        .cell-structure {
+            margin: 1rem 0;
+            border-collapse: collapse;
             width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            background-color: var(--bg-color);
-            border: 1px dashed var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.875rem;
         }
         
-        .file-input-button:hover {
-            background-color: rgba(0, 0, 0, 0.02);
-            border-color: var(--primary);
+        .cell-structure th,
+        .cell-structure td {
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            text-align: left;
         }
         
-        .upload-info {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            text-align: center;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .action-button {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-        }
-        
-        .action-button.web-search {
+        .cell-structure th {
             background-color: var(--primary-light);
             color: var(--primary);
         }
         
-        .action-button.web-search:hover {
-            background-color: rgba(16, 163, 127, 0.2);
-        }
-        
-        .action-button.view-material {
-            background-color: rgba(240, 173, 78, 0.1);
-            color: var(--warning);
-        }
-        
-        .action-button.view-material:hover {
-            background-color: rgba(240, 173, 78, 0.2);
-        }
-        
-        .action-button.ai-assistant {
-            background-color: rgba(91, 192, 222, 0.1);
-            color: var(--info);
-        }
-        
-        .action-button.ai-assistant:hover {
-            background-color: rgba(91, 192, 222, 0.2);
-        }
-        
-        .action-button.forward-question {
-            background-color: rgba(217, 83, 79, 0.1);
-            color: var(--danger);
-        }
-        
-        .action-button.forward-question:hover {
-            background-color: rgba(217, 83, 79, 0.2);
-        }
-        
-        .action-button.wikipedia-search {
-            background-color: rgba(0, 121, 194, 0.1);
-            color: #0079c2;
-        }
-        
-        .action-button.wikipedia-search:hover {
-            background-color: rgba(0, 121, 194, 0.2);
-        }
-        
-        .action-button.google-search {
-            background-color: rgba(66, 133, 244, 0.1);
-            color: var(--google-blue);
-        }
-        
-        .action-button.google-search:hover {
-            background-color: rgba(66, 133, 244, 0.2);
-        }
-        
-        .source-info {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            font-style: italic;
+        .cell-structure tr:nth-child(even) {
+            background-color: var(--sidebar-color);
         }
         
         .mobile-menu-button {
@@ -760,28 +713,142 @@
         .clear-history-btn:hover {
             background-color: rgba(217, 83, 79, 0.1);
         }
-        /* Cell structure styles */
         
-        .cell-structure {
-            margin: 1rem 0;
-            border-collapse: collapse;
+        .upload-section {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--sidebar-color);
+        }
+        
+        .upload-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .file-input-label {
+            flex: 1;
+            position: relative;
+        }
+        
+        .file-input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        .file-input-button {
             width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            background-color: var(--bg-color);
+            border: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
         }
         
-        .cell-structure th,
-        .cell-structure td {
-            border: 1px solid var(--border-color);
-            padding: 0.5rem;
-            text-align: left;
+        .file-input-button:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+            border-color: var(--primary);
         }
         
-        .cell-structure th {
+        .upload-info {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .action-button {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+        
+        .action-button.web-search {
             background-color: var(--primary-light);
             color: var(--primary);
         }
         
-        .cell-structure tr:nth-child(even) {
-            background-color: var(--sidebar-color);
+        .action-button.web-search:hover {
+            background-color: rgba(16, 163, 127, 0.2);
+        }
+        
+        .action-button.view-material {
+            background-color: rgba(240, 173, 78, 0.1);
+            color: var(--warning);
+        }
+        
+        .action-button.view-material:hover {
+            background-color: rgba(240, 173, 78, 0.2);
+        }
+        
+        .action-button.ai-assistant {
+            background-color: rgba(91, 192, 222, 0.1);
+            color: var(--info);
+        }
+        
+        .action-button.ai-assistant:hover {
+            background-color: rgba(91, 192, 222, 0.2);
+        }
+        
+        .action-button.forward-question {
+            background-color: rgba(217, 83, 79, 0.1);
+            color: var(--danger);
+        }
+        
+        .action-button.forward-question:hover {
+            background-color: rgba(217, 83, 79, 0.2);
+        }
+        
+        .action-button.wikipedia-search {
+            background-color: rgba(0, 121, 194, 0.1);
+            color: #0079c2;
+        }
+        
+        .action-button.wikipedia-search:hover {
+            background-color: rgba(0, 121, 194, 0.2);
+        }
+        
+        .action-button.google-search {
+            background-color: rgba(66, 133, 244, 0.1);
+            color: var(--google-blue);
+        }
+        
+        .action-button.google-search:hover {
+            background-color: rgba(66, 133, 244, 0.2);
+        }
+        
+        .source-info {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-style: italic;
         }
         
         @media (max-width: 768px) {
@@ -860,7 +927,7 @@
                 </div>
                 <div class="sidebar-content">
                     <ul class="chat-history" id="chat-history">
-                        <!-- Chat history items will be added here -->
+                        <!-- Chat history items -->
                     </ul>
                 </div>
                 <div class="sidebar-footer">
@@ -890,13 +957,13 @@
                     </div>
                 </div>
 
-                <div class="typing-indicator" id="typing-indicator" style="display: none;">
-                    <div class="typing-dots">
+                <div class="typing-indicator" id="typing-indicator">
+                    <div class="typing-animation">
                         <div class="typing-dot"></div>
                         <div class="typing-dot"></div>
                         <div class="typing-dot"></div>
                     </div>
-                    <span>BMLT BOT is typing...</span>
+                    <span>Analyzing your question...</span>
                 </div>
 
                 <div class="chat-input-container">
@@ -973,7 +1040,7 @@
         const ADMIN_EMAIL = 'patrickboadu878@gmail.com';
         const WIKIPEDIA_API_ENDPOINT = 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srlimit=3&origin=*&srsearch=';
 
-        // Lecture slides data for BMLT courses with cell structure
+        // Enhanced lecture slides data for BMLT courses with structure
         const LECTURE_SLIDES = {
             "medical genetics": {
                 title: "Medical Genetics",
@@ -1030,7 +1097,7 @@
             },
             "com skills": {
                 title: "Communication Skills",
-                downloadUrl: "slides/communication-skills.pptx",
+                downloadUrl: "slide/com skills.pptx",
                 description: "Effective communication techniques for healthcare professionals",
                 cellStructure: {
                     components: [{
@@ -1070,7 +1137,7 @@
             },
             "biophysics": {
                 title: "Biophysics",
-                downloadUrl: "slides/biophysics.pptx",
+                downloadUrl: "slide/biophysics.pdf",
                 description: "Physical principles applied to biological systems and medical technology",
                 cellStructure: {
                     topics: [{
@@ -1090,7 +1157,7 @@
             },
             "chemistry": {
                 title: "Chemistry",
-                downloadUrl: "slides/chemistry.pptx",
+                downloadUrl: "slide/chemistry.pptx",
                 description: "Chemical principles relevant to medical laboratory science",
                 cellStructure: {
                     components: [{
@@ -1110,7 +1177,7 @@
             },
             "mathematics": {
                 title: "Mathematics",
-                downloadUrl: "slides/mathematics.pptx",
+                downloadUrl: "slide/mathematics.pdf",
                 description: "Mathematical concepts and calculations for laboratory applications",
                 cellStructure: {
                     topics: [{
@@ -1130,128 +1197,282 @@
             }
         };
 
-        // Pre-defined AI responses for common BMLT questions
+        // Enhanced AI responses//
         const AI_RESPONSES = {
-            "what is bmlt": "BMLT stands for Bachelor of Medical Laboratory Technology. It's an undergraduate degree program that trains students to become medical laboratory technologists who perform diagnostic tests on patient samples to help diagnose, treat, and prevent diseases.",
-            "hematology tests": "Common hematology tests include:\n1. Complete Blood Count (CBC)\n2. Hemoglobin and Hematocrit\n3. Blood Smear Examination\n4. Coagulation Tests (PT, APTT)\n5. Erythrocyte Sedimentation Rate (ESR)\nThese tests help diagnose blood disorders, infections, and other conditions.",
-            "microbiology techniques": "Key microbiology techniques include:\n- Gram staining\n- Culture and sensitivity testing\n- Biochemical tests for bacterial identification\n- Antibiotic susceptibility testing\n- Molecular techniques like PCR\nThese methods help identify microorganisms causing infections.",
-            "clinical biochemistry": "Important clinical biochemistry tests include:\n1. Liver function tests (LFTs)\n2. Renal function tests (RFTs)\n3. Lipid profile\n4. Glucose tests\n5. Electrolyte analysis\nThese tests assess organ function and metabolic status.",
-            "immunology tests": "Common immunology tests include:\n- ELISA (Enzyme-Linked Immunosorbent Assay)\n- Western blot\n- Immunofluorescence\n- Flow cytometry\n- Agglutination tests\nThese detect antibodies, antigens, and immune system components.",
-            "histopathology": "Histopathology involves:\n1. Tissue fixation\n2. Processing and embedding\n3. Sectioning with microtome\n4. Staining (H&E, special stains)\n5. Microscopic examination\nUsed to diagnose diseases at tissue level.",
-            "medical genetics": "Medical genetics covers:\n- Patterns of inheritance\n- Chromosomal abnormalities\n- Genetic testing methods\n- Molecular diagnostics\n- Genetic counseling\nEssential for diagnosing genetic disorders.",
-            "instrumentation": "Lab instrumentation includes:\n- Microscopes\n- Centrifuges\n- Spectrophotometers\n- Automated analyzers\n- PCR machines\nUnderstanding these is crucial for accurate testing.",
-            "lab management": "Lab management principles:\n- Quality assurance\n- Safety protocols\n- Inventory control\n- Personnel management\n- Accreditation standards\nEnsures efficient lab operations."
+            "what is bmlt": {
+                response: "BMLT stands for Bachelor of Medical Laboratory Technology. It's an undergraduate degree program that trains students to become medical laboratory technologists who perform diagnostic tests on patient samples to help diagnose, treat, and prevent diseases.",
+                details: "The BMLT program typically includes courses in hematology, microbiology, clinical biochemistry, immunology, histopathology, and laboratory management. Graduates work in hospitals, research labs, and diagnostic centers, playing a crucial role in healthcare by providing accurate test results that inform medical decisions."
+            },
+            "hematology tests": {
+                response: "Common hematology tests include:",
+                list: [
+                    "Complete Blood Count (CBC) - Evaluates overall health and detects disorders",
+                    "Hemoglobin and Hematocrit - Measures oxygen-carrying capacity of blood",
+                    "Blood Smear Examination - Microscopic evaluation of blood cells",
+                    "Coagulation Tests (PT, APTT) - Assess blood clotting function",
+                    "Erythrocyte Sedimentation Rate (ESR) - Non-specific test for inflammation"
+                ],
+                conclusion: "These tests help diagnose anemia, infections, blood cancers, and clotting disorders."
+            },
+            "microbiology techniques": {
+                response: "Key microbiology techniques include:",
+                list: [
+                    "Gram staining - Differentiates bacteria into Gram-positive and Gram-negative",
+                    "Culture and sensitivity testing - Identifies pathogens and effective antibiotics",
+                    "Biochemical tests - Determines bacterial species based on metabolic characteristics",
+                    "Antibiotic susceptibility testing - Guides treatment decisions",
+                    "Molecular techniques like PCR - Detects genetic material of pathogens"
+                ],
+                conclusion: "These methods are essential for identifying microorganisms causing infections and determining appropriate treatments."
+            },
+            "clinical biochemistry": {
+                response: "Important clinical biochemistry tests include:",
+                list: [
+                    "Liver function tests (LFTs) - Assess liver health and detect damage",
+                    "Renal function tests (RFTs) - Evaluate kidney function",
+                    "Lipid profile - Measures cholesterol and triglycerides",
+                    "Glucose tests - Monitor blood sugar levels",
+                    "Electrolyte analysis - Checks sodium, potassium, chloride levels"
+                ],
+                conclusion: "These tests provide critical information about organ function and metabolic status."
+            },
+            "immunology tests": {
+                response: "Common immunology tests include:",
+                list: [
+                    "ELISA (Enzyme-Linked Immunosorbent Assay) - Detects antibodies or antigens",
+                    "Western blot - Confirms presence of specific proteins",
+                    "Immunofluorescence - Visualizes antigens in cells/tissues",
+                    "Flow cytometry - Analyzes cell populations",
+                    "Agglutination tests - Detects antibody-antigen reactions"
+                ],
+                conclusion: "These tests are vital for diagnosing autoimmune diseases, allergies, and immune deficiencies."
+            },
+            "histopathology": {
+                response: "Histopathology involves:",
+                list: [
+                    "Tissue fixation - Preserves tissue structure",
+                    "Processing and embedding - Prepares tissue for sectioning",
+                    "Sectioning with microtome - Creates thin tissue slices",
+                    "Staining (H&E, special stains) - Enhances tissue contrast",
+                    "Microscopic examination - Identifies disease at cellular level"
+                ],
+                conclusion: "This process is crucial for diagnosing cancers and other tissue abnormalities."
+            },
+            "medical genetics": {
+                response: "Medical genetics covers:",
+                list: [
+                    "Patterns of inheritance (autosomal dominant/recessive, X-linked)",
+                    "Chromosomal abnormalities (trisomies, deletions, translocations)",
+                    "Genetic testing methods (karyotyping, FISH, DNA sequencing)",
+                    "Molecular diagnostics (PCR, microarrays)",
+                    "Genetic counseling (risk assessment, family planning)"
+                ],
+                conclusion: "This field is essential for diagnosing genetic disorders and providing personalized medicine."
+            },
+            "instrumentation": {
+                response: "Lab instrumentation includes:",
+                list: [
+                    "Microscopes (light, fluorescence, electron)",
+                    "Centrifuges (low-speed, high-speed, ultracentrifuges)",
+                    "Spectrophotometers (UV-Vis, infrared)",
+                    "Automated analyzers (hematology, chemistry)",
+                    "PCR machines (standard, real-time)"
+                ],
+                conclusion: "Understanding these instruments is crucial for accurate testing and quality results."
+            },
+            "lab management": {
+                response: "Lab management principles include:",
+                list: [
+                    "Quality assurance (QC, proficiency testing)",
+                    "Safety protocols (PPE, biosafety levels)",
+                    "Inventory control (reagent management, equipment maintenance)",
+                    "Personnel management (training, scheduling)",
+                    "Accreditation standards (ISO, CAP, CLIA)"
+                ],
+                conclusion: "Effective management ensures reliable test results and efficient lab operations."
+            }
+        };
+
+        // natural language//
+        const COMMUNICATION = {
+            acknowledgments: [
+                "Understood, {name}!",
+                "I see what you're asking, {name}.",
+                "Excellent question, {name}!",
+                "Thanks for sharing that, {name}.",
+                "I understand your query, {name}.",
+                "Noted, {name}!",
+                "Great point, {name}!",
+                "Let me think about that for you, {name}...",
+                "Working on it, {name}...",
+                "Just a moment while I process that, {name}..."
+            ],
+            followUps: [
+                "Would you like me to elaborate on any part of this, {name}?",
+                "Does this answer your question, {name}?",
+                "Would you like more details about this topic, {name}?",
+                "Should I look for additional resources on this, {name}?",
+                "Is there anything else you'd like to know, {name}?",
+                "Would you like me to search for more information, {name}?",
+                "Do you have any related questions, {name}?",
+                "Would you like me to explain anything differently, {name}?",
+                "Should I save this information for you, {name}?",
+            ],
+            suggestions: [
+                "Ask about cell structue",
+                "Request lecture slides",
+                "Explain glucose tests",
+                "speak to human",
+                "what can you do",
+                "Show lab techniques",
+                "Explain genetics concepts",
+                "Discuss micro ceells",
+                "Show Electrophoresis tests",
+                "Explain lab management"
+            ],
+            statusMessages: [
+                "Analyzing your question, {name}...",
+                "Searching my knowledge base...",
+                "Reviewing uploaded materials...",
+                "Checking academic resources...",
+                "Preparing the best response for you...",
+                "Organizing information...",
+                "Verifying facts...",
+                "Formatting response...",
+                "Almost done...",
+                "Finalizing response..."
+            ],
+            quickResponses: {
+                'ok': ["Alright, {name}!", "Got it, {name}!", "Understood, {name}!"],
+                'okay': ["Sure thing, {name}!", "No problem, {name}!", "Will do, {name}!"],
+                'got it': ["Great, {name}!", "Perfect, {name}!", "Excellent, {name}!"],
+                'thanks': ["You're welcome, {name}!", "Happy to help, {name}!", "Anytime, {name}!"],
+                'thank you': ["My pleasure, {name}!", "You're very welcome, {name}!", "Glad I could help, {name}!"],
+                'cool': ["😎", "Awesome, {name}!", "Right, {name}?"],
+                'great': ["👍", "Wonderful, {name}!", "I agree, {name}!"],
+                'awesome': ["😃", "Terrific, {name}!", "Fantastic, {name}!"],
+                'perfect': ["👌", "Excellent, {name}!", "Couldn't be better, {name}!"],
+                'yes': ["Great, {name}!", "Understood, {name}!", "Perfect, {name}!"],
+                'no': ["Okay, let me know if you change your mind, {name}.", "No problem, {name}!", "Alright then, {name}."],
+                'maybe': ["Let me know when you decide, {name}.", "No rush, {name}!", "Take your time, {name}."]
+            }
         };
 
         document.addEventListener('DOMContentLoaded', function() {
-            // DOM Elements
-            const chatMessages = document.getElementById('chat-messages');
-            const messageInput = document.getElementById('message-input');
-            const sendButton = document.getElementById('send-button');
-            const typingIndicator = document.getElementById('typing-indicator');
-            const fileInput = document.getElementById('file-input');
-            const uploadTrigger = document.getElementById('upload-trigger');
-            const uploadStatus = document.getElementById('upload-status');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const sidebar = document.getElementById('sidebar');
-            const newChatBtn = document.getElementById('new-chat-btn');
-            const forwardModal = document.getElementById('forward-modal');
-            const forwardModalClose = document.getElementById('forward-modal-close');
-            const forwardModalCancel = document.getElementById('forward-modal-cancel');
-            const forwardEmail = document.getElementById('forward-email');
-            const forwardWhatsapp = document.getElementById('forward-whatsapp');
-            const clearHistoryBtn = document.getElementById('clear-history-btn');
+                    // DOM Elements
+                    const chatMessages = document.getElementById('chat-messages');
+                    const messageInput = document.getElementById('message-input');
+                    const sendButton = document.getElementById('send-button');
+                    const typingIndicator = document.getElementById('typing-indicator');
+                    const fileInput = document.getElementById('file-input');
+                    const uploadTrigger = document.getElementById('upload-trigger');
+                    const uploadStatus = document.getElementById('upload-status');
+                    const mobileMenuButton = document.getElementById('mobile-menu-button');
+                    const sidebar = document.getElementById('sidebar');
+                    const newChatBtn = document.getElementById('new-chat-btn');
+                    const forwardModal = document.getElementById('forward-modal');
+                    const forwardModalClose = document.getElementById('forward-modal-close');
+                    const forwardModalCancel = document.getElementById('forward-modal-cancel');
+                    const forwardEmail = document.getElementById('forward-email');
+                    const forwardWhatsapp = document.getElementById('forward-whatsapp');
+                    const clearHistoryBtn = document.getElementById('clear-history-btn');
 
-            // State variables
-            let studentName = '';
-            let isAskingForName = true;
-            let uploadedDocuments = [];
-            let currentQuestion = '';
-            let chatHistory = [];
+                    // State variables
+                    let studentName = '';
+                    let isAskingForName = true;
+                    let uploadedDocuments = [];
+                    let currentQuestion = '';
+                    let chatHistory = [];
+                    let isTyping = false;
+                    let typingInterval = null;
+                    let statusInterval = null;
 
-            // Initialize the app
-            init();
+                    // Initialize the app
+                    init();
 
-            function init() {
-                // Load chat history from localStorage
-                const savedHistory = localStorage.getItem('chatHistory');
-                if (savedHistory) {
-                    chatHistory = JSON.parse(savedHistory);
-                    renderChatHistory();
-                }
-
-                // Set up event listeners
-                setupEventListeners();
-
-                // Auto-resize textarea
-                autoResizeTextarea();
-            }
-
-            function setupEventListeners() {
-                // Send message on Enter (but allow Shift+Enter for new lines)
-                messageInput.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        sendMessage();
-                    }
-                });
-
-                // Send message on button click
-                sendButton.addEventListener('click', sendMessage);
-
-                // Upload file triggers
-                uploadTrigger.addEventListener('click', () => fileInput.click());
-                fileInput.addEventListener('change', handleFileUpload);
-
-                // Mobile menu toggle
-                mobileMenuButton.addEventListener('click', toggleSidebar);
-
-                // New chat button
-                newChatBtn.addEventListener('click', startNewChat);
-
-                // Forward modal controls
-                forwardModalClose.addEventListener('click', closeForwardModal);
-                forwardModalCancel.addEventListener('click', closeForwardModal);
-                forwardEmail.addEventListener('click', () => forwardQuestion('email'));
-                forwardWhatsapp.addEventListener('click', () => forwardQuestion('whatsapp'));
-
-                // Clear history button
-                clearHistoryBtn.addEventListener('click', clearChatHistory);
-
-                // Close modal when clicking outside
-                forwardModal.addEventListener('click', function(e) {
-                    if (e.target === forwardModal) {
-                        closeForwardModal();
-                    }
-                });
-            }
-
-            function autoResizeTextarea() {
-                messageInput.addEventListener('input', function() {
-                    this.style.height = 'auto';
-                    this.style.height = (this.scrollHeight) + 'px';
-                });
-            }
-
-            function toggleSidebar() {
-                sidebar.classList.toggle('active');
-            }
-
-            function startNewChat() {
-                if (chatMessages.children.length > 1 || studentName) {
-                    if (confirm('Start a new chat? Your current chat will be saved in history.')) {
-                        // Save current chat to history if not empty
-                        if (chatMessages.children.length > 1) {
-                            saveCurrentChat();
+                    function init() {
+                        // Load chat history from localStorage
+                        const savedHistory = localStorage.getItem('chatHistory');
+                        if (savedHistory) {
+                            chatHistory = JSON.parse(savedHistory);
+                            renderChatHistory();
                         }
 
-                        // Reset state
-                        studentName = '';
-                        isAskingForName = true;
-                        currentQuestion = '';
+                        // Set up event listeners
+                        setupEventListeners();
 
-                        // Clear chat messages
-                        chatMessages.innerHTML = `
+                        // Auto-resize textarea
+                        autoResizeTextarea();
+
+                        // Hide typing indicator initially
+                        hideTyping();
+                    }
+
+                    function setupEventListeners() {
+                        // Send message on Enter (but allow Shift+Enter for new lines)
+                        messageInput.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter' && !e.shiftKey) {
+                                e.preventDefault();
+                                sendMessage();
+                            }
+                        });
+
+                        // Send message on button click
+                        sendButton.addEventListener('click', sendMessage);
+
+                        // Upload file triggers
+                        uploadTrigger.addEventListener('click', () => fileInput.click());
+                        fileInput.addEventListener('change', handleFileUpload);
+
+                        // Mobile menu toggle
+                        mobileMenuButton.addEventListener('click', toggleSidebar);
+
+                        // New chat button
+                        newChatBtn.addEventListener('click', startNewChat);
+
+                        // Forward modal controls
+                        forwardModalClose.addEventListener('click', closeForwardModal);
+                        forwardModalCancel.addEventListener('click', closeForwardModal);
+                        forwardEmail.addEventListener('click', () => forwardQuestion('email'));
+                        forwardWhatsapp.addEventListener('click', () => forwardQuestion('whatsapp'));
+
+                        // Clear history button
+                        clearHistoryBtn.addEventListener('click', clearChatHistory);
+
+                        // Close modal when clicking outside
+                        forwardModal.addEventListener('click', function(e) {
+                            if (e.target === forwardModal) {
+                                closeForwardModal();
+                            }
+                        });
+                    }
+
+                    function autoResizeTextarea() {
+                        messageInput.addEventListener('input', function() {
+                            this.style.height = 'auto';
+                            this.style.height = (this.scrollHeight) + 'px';
+                        });
+                    }
+
+                    function toggleSidebar() {
+                        sidebar.classList.toggle('active');
+                    }
+
+                    function startNewChat() {
+                        if (chatMessages.children.length > 1 || studentName) {
+                            if (confirm('Start a new chat? Your current chat will be saved in history.')) {
+                                // Save current chat to history if not empty
+                                if (chatMessages.children.length > 1) {
+                                    saveCurrentChat();
+                                }
+
+                                // Reset state
+                                studentName = '';
+                                isAskingForName = true;
+                                currentQuestion = '';
+
+                                // Clear chat messages
+                                chatMessages.innerHTML = `
                             <div class="message bot-message">
                                 <div class="message-avatar bot-avatar">
                                     <i class="fas fa-robot"></i>
@@ -1264,167 +1485,235 @@
                                 </div>
                             </div>
                         `;
+                            }
+                        }
                     }
-                }
-            }
 
-            function saveCurrentChat() {
-                const messages = Array.from(chatMessages.children).map(messageEl => {
-                    const isBot = messageEl.classList.contains('bot-message');
-                    const content = messageEl.querySelector('.message-text').innerHTML;
-                    return {
-                        role: isBot ? 'assistant' : 'user',
-                        content: content
-                    };
-                });
+                    function saveCurrentChat() {
+                        const messages = Array.from(chatMessages.children).map(messageEl => {
+                            const isBot = messageEl.classList.contains('bot-message');
+                            const content = messageEl.querySelector('.message-text').innerHTML;
+                            return {
+                                role: isBot ? 'assistant' : 'user',
+                                content: content
+                            };
+                        });
 
-                if (messages.length > 1) {
-                    const chatTitle = messages[1].content.substring(0, 30) + (messages[1].content.length > 30 ? '...' : '');
-                    const chatItem = {
-                        id: Date.now(),
-                        title: chatTitle,
-                        messages: messages,
-                        timestamp: new Date().toISOString()
-                    };
+                        if (messages.length > 1) {
+                            const chatTitle = messages[1].content.substring(0, 30) + (messages[1].content.length > 30 ? '...' : '');
+                            const chatItem = {
+                                id: Date.now(),
+                                title: chatTitle,
+                                messages: messages,
+                                timestamp: new Date().toISOString()
+                            };
 
-                    chatHistory.unshift(chatItem);
-                    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-                    renderChatHistory();
-                }
-            }
+                            chatHistory.unshift(chatItem);
+                            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+                            renderChatHistory();
+                        }
+                    }
 
-            function renderChatHistory() {
-                const chatHistoryEl = document.getElementById('chat-history');
-                chatHistoryEl.innerHTML = '';
+                    function renderChatHistory() {
+                        const chatHistoryEl = document.getElementById('chat-history');
+                        chatHistoryEl.innerHTML = '';
 
-                if (chatHistory.length === 0) {
-                    const emptyMsg = document.createElement('li');
-                    emptyMsg.className = 'chat-history-item';
-                    emptyMsg.textContent = 'No chat history yet';
-                    chatHistoryEl.appendChild(emptyMsg);
-                    return;
-                }
+                        if (chatHistory.length === 0) {
+                            const emptyMsg = document.createElement('li');
+                            emptyMsg.className = 'chat-history-item';
+                            emptyMsg.textContent = 'No chat history yet';
+                            chatHistoryEl.appendChild(emptyMsg);
+                            return;
+                        }
 
-                chatHistory.forEach(chat => {
-                    const li = document.createElement('li');
-                    li.className = 'chat-history-item';
+                        chatHistory.forEach(chat => {
+                            const li = document.createElement('li');
+                            li.className = 'chat-history-item';
 
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'chat-history-item-content';
-                    contentDiv.textContent = chat.title;
+                            const contentDiv = document.createElement('div');
+                            contentDiv.className = 'chat-history-item-content';
+                            contentDiv.textContent = chat.title;
 
-                    const deleteBtn = document.createElement('div');
-                    deleteBtn.className = 'chat-history-item-delete';
-                    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-                    deleteBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        deleteChatItem(chat.id);
-                    });
+                            const deleteBtn = document.createElement('div');
+                            deleteBtn.className = 'chat-history-item-delete';
+                            deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                            deleteBtn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                deleteChatItem(chat.id);
+                            });
 
-                    li.appendChild(contentDiv);
-                    li.appendChild(deleteBtn);
-                    li.addEventListener('click', () => loadChat(chat.id));
-                    chatHistoryEl.appendChild(li);
-                });
-            }
+                            li.appendChild(contentDiv);
+                            li.appendChild(deleteBtn);
+                            li.addEventListener('click', () => loadChat(chat.id));
+                            chatHistoryEl.appendChild(li);
+                        });
+                    }
 
-            function deleteChatItem(chatId) {
-                if (confirm('Are you sure you want to delete this chat?')) {
-                    chatHistory = chatHistory.filter(chat => chat.id !== chatId);
-                    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-                    renderChatHistory();
-                }
-            }
+                    function deleteChatItem(chatId) {
+                        if (confirm('Are you sure you want to delete this chat?')) {
+                            chatHistory = chatHistory.filter(chat => chat.id !== chatId);
+                            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+                            renderChatHistory();
+                        }
+                    }
 
-            function clearChatHistory() {
-                if (chatHistory.length === 0) return;
+                    function clearChatHistory() {
+                        if (chatHistory.length === 0) return;
 
-                if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
-                    chatHistory = [];
-                    localStorage.removeItem('chatHistory');
-                    renderChatHistory();
-                }
-            }
+                        if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
+                            chatHistory = [];
+                            localStorage.removeItem('chatHistory');
+                            renderChatHistory();
+                        }
+                    }
 
-            function loadChat(chatId) {
-                const chat = chatHistory.find(c => c.id === chatId);
-                if (!chat) return;
+                    function loadChat(chatId) {
+                        const chat = chatHistory.find(c => c.id === chatId);
+                        if (!chat) return;
 
-                // Save current chat if not empty
-                if (chatMessages.children.length > 1) {
-                    saveCurrentChat();
-                }
+                        // Save current chat if not empty
+                        if (chatMessages.children.length > 1) {
+                            saveCurrentChat();
+                        }
 
-                // Load the selected chat
-                chatMessages.innerHTML = '';
-                chat.messages.forEach(msg => {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.className = `message ${msg.role === 'assistant' ? 'bot-message' : 'user-message'}`;
+                        // Load the selected chat
+                        chatMessages.innerHTML = '';
+                        chat.messages.forEach(msg => {
+                            const messageDiv = document.createElement('div');
+                            messageDiv.className = `message ${msg.role === 'assistant' ? 'bot-message' : 'user-message'}`;
 
-                    messageDiv.innerHTML = `
+                            messageDiv.innerHTML = `
                         <div class="message-avatar ${msg.role === 'assistant' ? 'bot-avatar' : 'user-avatar'}">
                             <i class="${msg.role === 'assistant' ? 'fas fa-robot' : 'fas fa-user'}"></i>
                         </div>
                         <div class="message-content">
-                            <div class="message-role">${msg.role === 'assistant' ? 'BMLT Assistant' : 'You'}</div>
+                            <div class="message-role">${msg.role === 'assistant' ? 'BMLT Assistant' : studentName || 'You'}</div>
                             <div class="message-text">${msg.content}</div>
                         </div>
                     `;
 
-                    chatMessages.appendChild(messageDiv);
-                });
+                            chatMessages.appendChild(messageDiv);
+                        });
 
-                // Update state
-                isAskingForName = false;
-                if (chat.messages.length > 1) {
-                    const firstBotMessage = chat.messages[0].content;
-                    if (firstBotMessage.includes('Nice to meet you')) {
-                        const nameMatch = firstBotMessage.match(/Nice to meet you, (.*?)!/);
-                        if (nameMatch && nameMatch[1]) {
-                            studentName = nameMatch[1];
+                        // Update state
+                        isAskingForName = false;
+                        if (chat.messages.length > 1) {
+                            const firstBotMessage = chat.messages[0].content;
+                            if (firstBotMessage.includes('Nice to meet you')) {
+                                const nameMatch = firstBotMessage.match(/Nice to meet you, (.*?)!/);
+                                if (nameMatch && nameMatch[1]) {
+                                    studentName = nameMatch[1];
+                                    updateUserNameInUI();
+                                }
+                            }
+                        }
+
+                        // Close sidebar on mobile
+                        if (window.innerWidth <= 768) {
+                            sidebar.classList.remove('active');
+                        }
+
+                        // Scroll to bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+
+                    function updateUserNameInUI() {
+                        if (studentName) {
+                            document.querySelector('.user-name').textContent = studentName;
+                            document.querySelector('.user-avatar').textContent = studentName.substring(0, 2).toUpperCase();
                         }
                     }
-                }
 
-                // Close sidebar on mobile
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.remove('active');
-                }
+                    function addMessage(content, isUser) {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
 
-                // Scroll to bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+                        const messageId = 'msg-' + Date.now();
 
-            function addMessage(content, isUser) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-
-                messageDiv.innerHTML = `
+                        messageDiv.innerHTML = `
                     <div class="message-avatar ${isUser ? 'user-avatar' : 'bot-avatar'}">
                         <i class="${isUser ? 'fas fa-user' : 'fas fa-robot'}"></i>
                     </div>
                     <div class="message-content">
-                        <div class="message-role">${isUser ? 'You' : 'BMLT Assistant'}</div>
+                        <div class="message-role">${isUser ? studentName || 'You' : 'BMLT Assistant'}</div>
                         <div class="message-text">${content}</div>
+                        ${isUser ? `
+                        <div class="message-status">
+                            <div class="message-status-item">
+                                <span>${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                            </div>
+                            <div class="message-status-item read-receipt" id="${messageId}-status">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>` : ''}
                     </div>
                 `;
 
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                if (isUser) {
+                    // Simulate read receipt after a delay
+                    setTimeout(() => {
+                        const statusElement = document.getElementById(`${messageId}-status`);
+                        if (statusElement) {
+                            statusElement.innerHTML = '<i class="fas fa-check-double"></i>';
+                        }
+                    }, 1000);
+                }
             }
-
+            
+            function getRandomPhrase(type) {
+                const phrases = COMMUNICATION[type];
+                let phrase = phrases[Math.floor(Math.random() * phrases.length)];
+                return phrase.replace(/{name}/g, studentName || '');
+            }
+            
             function showTyping() {
+                if (isTyping) return;
+                isTyping = true;
+                
                 typingIndicator.style.display = 'flex';
+                typingIndicator.innerHTML = `
+                    <div class="typing-animation">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                    <span>${getRandomPhrase('statusMessages')}</span>
+                `;
+                
+                // Rotate status messages while typing
+                const statusSpan = typingIndicator.querySelector('span');
+                if (statusSpan) {
+                    statusInterval = setInterval(() => {
+                        if (!isTyping) {
+                            clearInterval(statusInterval);
+                            return;
+                        }
+                        statusSpan.textContent = getRandomPhrase('statusMessages');
+                    }, 2000);
+                }
+                
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
             function hideTyping() {
+                isTyping = false;
                 typingIndicator.style.display = 'none';
+                if (statusInterval) clearInterval(statusInterval);
+                if (typingInterval) clearInterval(typingInterval);
             }
 
             function addBotResponse(response, actions = []) {
                 showTyping();
-
+                
+                // Add random acknowledgment
+                const acknowledgment = document.createElement('div');
+                acknowledgment.className = 'acknowledgment';
+                acknowledgment.textContent = getRandomPhrase('acknowledgments');
+                chatMessages.appendChild(acknowledgment);
+                
                 const messageDiv = document.createElement('div');
                 messageDiv.className = 'message bot-message';
 
@@ -1440,34 +1729,78 @@
 
                 chatMessages.appendChild(messageDiv);
 
-                // Simulate typing effect
+                // Simulate typing effect with thinking time
                 const messageText = messageDiv.querySelector('.message-text');
                 messageText.style.visibility = 'hidden';
                 messageText.textContent = '';
-
+                
+                // Faster response time calculation//
+                const thinkingTime = Math.min(Math.max(response.length / 50, 0.5), 3); // 0.5-3 seconds
+                const thinkingTimeElement = document.createElement('span');
+                thinkingTimeElement.className = 'thinking-time';
+                thinkingTimeElement.textContent = `(Thinking...)`;
+                acknowledgment.appendChild(thinkingTimeElement);
+                
                 let i = 0;
-                const typingInterval = setInterval(() => {
+                typingInterval = setInterval(() => {
                     if (i < response.length) {
                         const char = response.charAt(i);
                         const isTag = char === '<';
 
                         if (isTag) {
-                            // Skip to end of tag
                             const endTag = response.indexOf('>', i);
                             if (endTag !== -1) {
                                 messageText.innerHTML += response.substring(i, endTag + 1);
-                                i = endTag;
+                                i = endTag + 1;
+                            } else {
+                                messageText.innerHTML += char;
+                                i++;
                             }
                         } else {
                             messageText.innerHTML += char;
+                            i++;
                         }
 
-                        i++;
                         chatMessages.scrollTop = chatMessages.scrollHeight;
                     } else {
                         clearInterval(typingInterval);
                         messageText.style.visibility = 'visible';
+                        thinkingTimeElement.textContent = `(Done)`;
+                        setTimeout(() => {
+                            thinkingTimeElement.remove();
+                        }, 1000);
                         hideTyping();
+                        
+                        // Add follow-up question
+                        if (Math.random() > 0.3) { // 70% chance of follow-up
+                            const followUpDiv = document.createElement('div');
+                            followUpDiv.className = 'follow-up';
+                            followUpDiv.textContent = getRandomPhrase('followUps');
+                            messageDiv.querySelector('.message-content').appendChild(followUpDiv);
+                        }
+                        
+                        // Add suggested questions
+                        if (actions.length === 0 && Math.random() > 0.5) {
+                            const suggestionsDiv = document.createElement('div');
+                            suggestionsDiv.className = 'suggestions';
+                            
+                            // Get 3 random suggestions
+                            const shuffled = [...COMMUNICATION.suggestions].sort(() => 0.5 - Math.random());
+                            const selectedSuggestions = shuffled.slice(0, 3);
+                            
+                            selectedSuggestions.forEach(suggestion => {
+                                const chip = document.createElement('div');
+                                chip.className = 'suggestion-chip';
+                                chip.textContent = suggestion;
+                                chip.addEventListener('click', () => {
+                                    messageInput.value = suggestion;
+                                    messageInput.focus();
+                                });
+                                suggestionsDiv.appendChild(chip);
+                            });
+                            
+                            messageDiv.querySelector('.message-content').appendChild(suggestionsDiv);
+                        }
 
                         if (actions.length > 0) {
                             const actionsDiv = document.createElement('div');
@@ -1485,7 +1818,7 @@
                             chatMessages.scrollTop = chatMessages.scrollHeight;
                         }
                     }
-                }, 20);
+                }, 4); //typing speed (4ms per character)//
             }
 
             function sendMessage() {
@@ -1502,6 +1835,7 @@
                 if (isAskingForName) {
                     studentName = message;
                     isAskingForName = false;
+                    updateUserNameInUI();
 
                     setTimeout(() => {
                         const welcomeMessage = `Nice to meet you, ${studentName}! I'm your BMLT academic assistant. How can I help you today?<br><br>You can:
@@ -1512,7 +1846,7 @@
                             <li>Download lecture slides when available</li>
                         </ul>`;
                         addBotResponse(welcomeMessage);
-                    }, 1000);
+                    }, 500); // Faster response time
                     return;
                 }
 
@@ -1522,7 +1856,36 @@
                     return;
                 }
 
+                // Check for quick acknowledgments
+                if (isQuickAcknowledgment(message)) {
+                    handleQuickAcknowledgment(message);
+                    return;
+                }
+
                 processUserMessage(message);
+            }
+            
+            function isQuickAcknowledgment(message) {
+                const lowerMessage = message.toLowerCase();
+                return Object.keys(COMMUNICATION.quickResponses).some(key => lowerMessage.includes(key));
+            }
+            
+            function handleQuickAcknowledgment(message) {
+                const lowerMessage = message.toLowerCase();
+                let responseOptions = ["Great!", "Understood!", "Perfect!"];
+                
+                for (const [key, phrases] of Object.entries(COMMUNICATION.quickResponses)) {
+                    if (lowerMessage.includes(key)) {
+                        responseOptions = phrases;
+                        break;
+                    }
+                }
+                
+                const response = responseOptions[Math.floor(Math.random() * responseOptions.length)].replace(/{name}/g, studentName || '');
+                
+                setTimeout(() => {
+                    addBotResponse(response);
+                }, 300); 
             }
 
             async function handleFileUpload() {
@@ -1567,7 +1930,7 @@
                             `Thank you for uploading materials, ${studentName}! I can now analyze these documents to help answer your questions.` :
                             "Thank you for uploading materials! I can now analyze these documents to help answer your questions.";
                         addBotResponse(uploadMessage);
-                    }, 500);
+                    }, 300); // Faster response time
                 } catch (error) {
                     console.error('Error processing files:', error);
                     uploadStatus.textContent = "Error processing files. Please try again.";
@@ -1587,7 +1950,10 @@
                             const pdf = await pdfjsLib.getDocument(typedArray).promise;
                             let fullText = '';
 
-                            for (let i = 1; i <= pdf.numPages; i++) {
+                            // Only process first 10 pages for performance
+                            const maxPages = Math.min(pdf.numPages, 10);
+                            
+                            for (let i = 1; i <= maxPages; i++) {
                                 const page = await pdf.getPage(i);
                                 const textContent = await page.getTextContent();
                                 const text = textContent.items.map(item => item.str).join(' ');
@@ -1606,19 +1972,19 @@
 
             async function extractTextFromPPTX(file) {
                 return new Promise((resolve) => {
-                    // Simulate text extraction (real implementation would require server-side processing)
+                    // Simulate text extraction//
                     setTimeout(() => {
                         resolve(`PowerPoint content extracted from ${file.name}\n\nSlide 1: Introduction\nSlide 2: Key Concepts\nSlide 3: Examples\nSlide 4: Summary`);
-                    }, 1000);
+                    }, 500); // Faster processing time
                 });
             }
 
             async function extractTextFromDoc(file) {
                 return new Promise((resolve) => {
-                    // Simulate text extraction (real implementation would require server-side processing)
+                    // Simulate text extraction//
                     setTimeout(() => {
                         resolve(`Text content extracted from ${file.name}\n\nThis is a simulated text extraction from a Word or text document.`);
-                    }, 1000);
+                    }, 500); // Faster processing time
                 });
             }
 
@@ -1647,7 +2013,7 @@
             }
 
             async function searchGoogle(query) {
-                // Simulate Google search since the API isn't free
+                // Simulate Google search//
                 try {
                     // These would be real API results in a production environment
                     const simulatedResults = [{
@@ -1684,17 +2050,62 @@
             async function callAIForHelp(query) {
                 // Use pre-defined responses for common questions
                 const lowerQuery = query.toLowerCase();
-                let response = AI_RESPONSES[lowerQuery] ||
-                    `Regarding "${query}", here's a general explanation:\n\n` +
-                    `For more specific information, try searching Wikipedia or uploading relevant materials. ` +
-                    `You can also ask me about:\n- Medical genetics\n- Instrumentation and lab management\n- Communication skills\n- Computer literacy\n- Biophysics\n- Chemistry\n- Mathematics`;
-
-                return `<strong>AI Assistant response:</strong><br><br>${response.replace(/\n/g, '<br>')}<br><br><div class="source-info">AI-generated response based on pre-defined knowledge</div>`;
+                let aiResponse = null;
+                
+                // Check for exact matches first
+                for (const [key, responseObj] of Object.entries(AI_RESPONSES)) {
+                    if (lowerQuery.includes(key)) {
+                        aiResponse = responseObj;
+                        break;
+                    }
+                }
+                
+                // If no exact match, check for partial matches
+                if (!aiResponse) {
+                    for (const [key, responseObj] of Object.entries(AI_RESPONSES)) {
+                        const keywords = key.split(' ');
+                        if (keywords.some(kw => lowerQuery.includes(kw))) {
+                            aiResponse = responseObj;
+                            break;
+                        }
+                    }
+                }
+                
+                if (aiResponse) {
+                    let responseHTML = `<strong>${aiResponse.response}</strong><br><br>`;
+                    
+                    if (aiResponse.list) {
+                        responseHTML += `<ul>`;
+                        aiResponse.list.forEach(item => {
+                            responseHTML += `<li>${item}</li>`;
+                        });
+                        responseHTML += `</ul><br>`;
+                    }
+                    
+                    if (aiResponse.details) {
+                        responseHTML += `${aiResponse.details}<br><br>`;
+                    }
+                    
+                    if (aiResponse.conclusion) {
+                        responseHTML += `${aiResponse.conclusion}<br>`;
+                    }
+                    
+                    responseHTML += `<div class="source-info">AI-generated response based on pre-defined knowledge</div>`;
+                    return responseHTML;
+                } else {
+                    return `<strong>Regarding "${query}":</strong><br><br>
+                    I don't have a specific response for that, but here's some general information:<br><br>
+                    For more specific answers, try:<br>
+                    - Searching Wikipedia<br>
+                    - Uploading relevant lecture materials<br>
+                    - Asking more detailed questions<br><br>
+                    <div class="source-info">AI-generated response based on general knowledge</div>`;
+                }
             }
 
-            function handleSlideRequest(query) {
+            function handleSlideRequest(message) {
                 // Find matching slides
-                const lowerQuery = query.toLowerCase();
+                const lowerQuery = message.toLowerCase();
                 let matchingSlides = [];
 
                 for (const [key, slide] of Object.entries(LECTURE_SLIDES)) {
@@ -1710,11 +2121,11 @@
                         response += `<strong>${index + 1}. ${slide.title}</strong><br>`;
                         response += `${slide.description}<br>`;
                         response += `<a href="${slide.downloadUrl}" class="download-slide" download><i class="fas fa-download"></i> Download Slides</a><br><br>`;
-
+                        
                         // Add cell structure information if available
                         if (slide.cellStructure) {
                             response += `<strong>Cell Structure Information:</strong><br>`;
-
+                            
                             if (slide.cellStructure.components) {
                                 response += `<table class="cell-structure"><tr><th>Component</th><th>Description</th></tr>`;
                                 slide.cellStructure.components.forEach(comp => {
@@ -1722,7 +2133,7 @@
                                 });
                                 response += `</table><br>`;
                             }
-
+                            
                             if (slide.cellStructure.geneticMaterial) {
                                 response += `<strong>Genetic Material:</strong><br>`;
                                 for (const [key, value] of Object.entries(slide.cellStructure.geneticMaterial)) {
@@ -1759,7 +2170,7 @@
                             `Hello again, ${studentName}! How can I assist you today?` :
                             "Hello! How can I assist you today?";
                         addBotResponse(greetingResponse);
-                    }, 1000);
+                    }, 300); // Faster response time
                     return;
                 }
 
@@ -1769,7 +2180,7 @@
                             `You're very welcome, ${studentName}! Is there anything else I can help you with?` :
                             "You're very welcome! Is there anything else I can help you with?";
                         addBotResponse(thankYouResponse);
-                    }, 1000);
+                    }, 300); // Faster response time
                     return;
                 }
 
@@ -1786,7 +2197,7 @@
 </ul>
 How would you like me to assist you today?`;
                         addBotResponse(capabilitiesResponse);
-                    }, 1500);
+                    }, 500); // Faster response time
                     return;
                 }
 
@@ -1804,7 +2215,7 @@ Would you like me to forward your question to him now?`;
                             icon: "fas fa-share",
                             handler: () => openForwardModal(currentQuestion)
                         }]);
-                    }, 1500);
+                    }, 500); // Faster response time
                     return;
                 }
 
@@ -1848,7 +2259,7 @@ Would you like me to forward your question to him now?`;
                                     icon: "fas fa-share",
                                     handler: () => openForwardModal(currentQuestion)
                                 }]);
-                            }, 1500);
+                            }, 500); // Faster response time
                             return;
                         }
                     } catch (error) {
@@ -1884,7 +2295,7 @@ Would you like me to forward your question to him now?`;
                         icon: "fas fa-share",
                         handler: () => openForwardModal(currentQuestion)
                     }]);
-                }, 1500);
+                }, 500); // Faster response time
             }
 
             async function performWikipediaSearch(query) {
@@ -1893,11 +2304,11 @@ Would you like me to forward your question to him now?`;
                     const results = await searchWikipedia(query);
                     setTimeout(() => {
                         addBotResponse(results + `<div class="source-info">Information from Wikipedia</div>`);
-                    }, 2000);
+                    }, 1000); // Faster response time
                 } catch (error) {
                     setTimeout(() => {
                         addBotResponse("Sorry, I encountered an error while searching Wikipedia. Please try again.");
-                    }, 2000);
+                    }, 1000); // Faster response time
                 }
             }
 
@@ -1907,25 +2318,11 @@ Would you like me to forward your question to him now?`;
                     const results = await searchGoogle(query);
                     setTimeout(() => {
                         addBotResponse(results);
-                    }, 2000);
+                    }, 1000); // Faster response time
                 } catch (error) {
                     setTimeout(() => {
                         addBotResponse("Sorry, I encountered an error while searching Google. Please try again.");
-                    }, 2000);
-                }
-            }
-
-            async function callAIForHelp(query) {
-                showTyping();
-                try {
-                    const response = await callAIForHelp(query);
-                    setTimeout(() => {
-                        addBotResponse(response);
-                    }, 2500);
-                } catch (error) {
-                    setTimeout(() => {
-                        addBotResponse("Sorry, I couldn't generate an AI response. Please try again or choose another option.");
-                    }, 2500);
+                    }, 1000); // Faster response time
                 }
             }
 
@@ -1947,7 +2344,7 @@ Would you like me to forward your question to him now?`;
 
                 if (method === 'email') {
                     const subject = encodeURIComponent(`BMLT Assistant Question from ${studentName || 'Student'}`);
-                    const body = encodeURIComponent(forwardMessage + "\n\nPlease provide an answer when you get a chance.");
+                    const body = encodeURIComponent(forwardMessage + "\n\nPlease provide an answer when you get a chance.The student is waiting for it.");
                     window.open(`mailto:${ADMIN_EMAIL}?subject=${subject}&body=${body}`, '_blank');
 
                     addBotResponse(`I've prepared an email with your question to Boadu Patrick. Please review and send it.`);
@@ -1981,7 +2378,7 @@ Would you like me to forward your question to him now?`;
             function isAskingForContact(message) {
                 const contactPhrases = [
                     'contact you', 'reach you', 'your number', 'your phone',
-                    'your whatsapp', 'your email', 'get in touch', 'speak to human'
+                    'your whatsapp', 'your email', 'get in touch', 'speak to human',
                 ];
                 return contactPhrases.some(phrase => message.toLowerCase().includes(phrase));
             }
