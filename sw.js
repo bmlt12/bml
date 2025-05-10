@@ -65,7 +65,6 @@ self.addEventListener("activate", event => {
 });
 
 // Offline-first, cache-first strategy
-// Kick off two asynchronous requests, one to the cache and one to the network
 // If there's a cached version available, use it, but fetch an update for next time.
 // Gets data on screen as quickly as possible, then updates once the network has returned the latest data. 
 self.addEventListener("fetch", event => {
