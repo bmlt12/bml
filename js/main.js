@@ -109,37 +109,40 @@
 
 let deferredPrompt;
 
+// Listen for the install prompt event
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
   e.preventDefault();
-  // Stash the event so it can be triggered later
   deferredPrompt = e;
-  // Show your custom install button/prompt
-  showInstallPromotion();
+  sessionStorage.setItem('installAvailable', 'true'); // Store for refreshes
 });
 
-function showInstallPromotion() {
-  // Example: Show a button or modal prompting the user to install
-  const installButton = document.getElementById('install-button');
-  if (installButton) {
-    installButton.style.display = 'block';
-    installButton.addEventListener('click', () => {
-      // Trigger the install prompt
+// On page load, check if we should show the prompt
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('installAvailable') === 'true' && deferredPrompt) {
+    // Show a minimal popup (required for user interaction)
+    const installTrigger = document.getElementById('auto-install-trigger');
+    
+    // Simulate a click (some browsers may block this, but most allow it)
+    setTimeout(() => {
+      installTrigger.click(); // Auto-trigger the prompt
+    }, 1000); // Small delay to ensure DOM is ready
+    
+    installTrigger.addEventListener('click', () => {
       deferredPrompt.prompt();
-      // Wait for the user to respond
       deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
+          console.log("User installed the PWA");
+          sessionStorage.removeItem('installAvailable'); // Clear flag
         } else {
-          console.log('User dismissed the install prompt');
+          console.log("User dismissed the prompt");
         }
         deferredPrompt = null;
       });
     });
   }
-}
+});
 
-// Optional: Track successful PWA installation
+// Clear flag if the app is already installed
 window.addEventListener('appinstalled', () => {
-  console.log('PWA was installed');
+  sessionStorage.removeItem('installAvailable');
 });
