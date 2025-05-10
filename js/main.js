@@ -107,3 +107,39 @@
 
 })(jQuery);
 
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  // Show your custom install button/prompt
+  showInstallPromotion();
+});
+
+function showInstallPromotion() {
+  // Example: Show a button or modal prompting the user to install
+  const installButton = document.getElementById('install-button');
+  if (installButton) {
+    installButton.style.display = 'block';
+    installButton.addEventListener('click', () => {
+      // Trigger the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+  }
+}
+
+// Optional: Track successful PWA installation
+window.addEventListener('appinstalled', () => {
+  console.log('PWA was installed');
+});
